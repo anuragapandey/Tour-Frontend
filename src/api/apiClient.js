@@ -2,7 +2,7 @@
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000",
-  timeout: 15000,
+  timeout: 10000000,
 });
 
 export default apiClient;
