@@ -1,21 +1,22 @@
 import { useState } from "react";
-import { FiCalendar, FiMapPin } from "react-icons/fi";
+import { FiCalendar, FiMapPin, FiEdit3, FiTrash2 } from "react-icons/fi";
 import { resolveImageUrl } from "../../utils/resolveImageUrl";
 import { formatDate } from "../../utils/formatDate";
 
-const GalleryCard = ({ user, onSelectLocation }) => {
+const GalleryCard = ({ user, onSelectLocation, onCardClick, onEditClick, onDeleteClick }) => {
   const [hasImageError, setHasImageError] = useState(false);
   const imageUrl = resolveImageUrl(user.image_url);
   const shouldShowImage = imageUrl && !hasImageError;
 
   return (
-    <article className="soft-card overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
-      <button
-        type="button"
-        onClick={onSelectLocation}
-        className="block w-full text-left"
-        aria-label={`Show ${user.location} on map`}
-      >
+    <article 
+      onClick={() => {
+        onSelectLocation();
+        onCardClick(user);
+      }}
+      className="soft-card overflow-hidden transition hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+    >
+      <div className="relative">
         {shouldShowImage ? (
           <img
             src={imageUrl}
@@ -29,7 +30,32 @@ const GalleryCard = ({ user, onSelectLocation }) => {
             Image unavailable
           </div>
         )}
-      </button>
+
+        <div className="absolute top-2.5 right-2.5 flex gap-2">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEditClick(user);
+            }}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-md backdrop-blur-sm transition hover:bg-teal-600 hover:text-white hover:scale-110"
+            title="Edit Journey"
+          >
+            <FiEdit3 className="h-3.5 w-3.5" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDeleteClick(user);
+            }}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-red-600 shadow-md backdrop-blur-sm transition hover:bg-red-600 hover:text-white hover:scale-110"
+            title="Delete Journey"
+          >
+            <FiTrash2 className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      </div>
 
       <div className="space-y-2 p-4">
         <div className="flex items-start justify-between gap-3">
