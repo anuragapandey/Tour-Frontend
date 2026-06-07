@@ -1,92 +1,93 @@
+import { useState, useEffect } from "react";
 import { FiMapPin, FiPhone } from "react-icons/fi";
 import logoMark from "../../assets/seven-hills-logo.svg";
 import { brand, contactDetails } from "../../data/siteContent";
+import { destinations } from "../../data/destinations";
 
-const HeroSection = () => {
+const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestinationId, isModalOpen }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const currentDestination =
+    destinations.find((d) => d.id === activeDestinationId) || destinations[0];
+
+  useEffect(() => {
+    if (isHovered || isModalOpen) return;
+    const interval = setInterval(() => {
+      const currentIndex = destinations.findIndex((d) => d.id === activeDestinationId);
+      const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % destinations.length;
+      if (setActiveDestinationId) {
+        setActiveDestinationId(destinations[nextIndex].id);
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [activeDestinationId, setActiveDestinationId, isHovered, isModalOpen]);
+
   return (
     <section className="section-shell py-2 md:py-3">
-      <div className="grid items-center gap-4 overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-900 via-teal-900 to-cyan-700 p-4 text-white shadow-xl sm:p-5 md:grid-cols-[1.1fr_1fr] md:p-6">
-        <div className="space-y-3">
-          <div className="inline-flex w-max items-center gap-2 rounded-full bg-white/15 px-2.5 py-1">
-            <img src={logoMark} alt={`${brand.name} logo`} className="h-6 w-6 rounded-full border border-white/30" />
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-cyan-50">Tourism Platform</p>
+      <div className="relative">
+        {/* Subtle background glow */}
+        <div className="absolute -inset-4 rounded-3xl bg-teal-500/10 blur-3xl" />
+
+        {/* Interactive Full-Width Hero Container */}
+        <article
+          className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 text-white shadow-xl cursor-pointer group transition-all duration-300"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => onSelectDestination && onSelectDestination(currentDestination)}
+        >
+          {/* Slide Image */}
+          <div className="absolute inset-0 h-full w-full bg-slate-950">
+            <img
+              key={currentDestination.id}
+              src={currentDestination.images[0]}
+              alt={currentDestination.label}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-103 animate-fade-in"
+            />
           </div>
 
-          <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
-            {brand.name}
-            <span className="block text-cyan-200">Discover India with Clarity</span>
-          </h1>
+          {/* Dark Vignette Overlay Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/50 via-transparent to-transparent" />
 
-          <p className="max-w-lg text-sm text-cyan-50 sm:text-base">
-            Curated destinations, verified stays, a live traveler gallery, and a simple submission flow for effortless
-            planning.
-          </p>
+          {/* Brand Logo Overlay (Top-Left) */}
+          <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-slate-900/60 border border-white/20 px-3 py-1.5 backdrop-blur-md">
+            <img src={logoMark} alt={`${brand.name} logo`} className="h-5 w-5 rounded-full border border-white/30" />
+            <p className="text-[10px] font-bold uppercase tracking-widest text-cyan-100">{brand.name}</p>
+          </div>
 
-          {/* <div className="flex flex-wrap gap-2.5">
-            <Link
-              to="/gallery"
-              className="focus-ring rounded-xl bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600"
-            >
-              Start Uploading
-            </Link>
-            <Link
-              to="/contact"
-              className="focus-ring rounded-xl border border-white/40 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20"
-            >
-              Talk to an Expert
-            </Link>
-          </div> */}
-        </div>
+          {/* Featured Badge (Top-Right) */}
+          <div className="absolute top-4 right-4 rounded-full bg-white/20 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-wider text-white backdrop-blur-md uppercase">
+            Featured Tour
+          </div>
 
-        <div className="relative">
-          <div className="absolute -inset-4 rounded-3xl bg-cyan-300/20 blur-2xl" />
-          <article className="relative h-56 overflow-hidden rounded-2xl border border-white/20 bg-white text-slate-900 shadow-2xl sm:h-64 md:h-[310px]">
-            <div
-              className="absolute inset-y-0 right-0 w-[44%] bg-sky-400"
-              style={{ clipPath: "polygon(20% 0, 100% 0, 100% 100%, 0 100%)" }}
-            />
-
-            <div className="relative flex h-full flex-col p-3 sm:p-4">
-              <div className="grid grid-cols-[1fr_auto] gap-3">
-                <div>
-                  <p className="text-base font-extrabold leading-tight sm:text-2xl">Saurabh Tiwari</p>
-                  <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold sm:text-base">
-                    <FiPhone className="text-slate-700" />
-                    {contactDetails.phoneDisplay}
-                  </p>
-                </div>
-
-                <div className="relative z-10 text-center">
-                  <img
-                    src={logoMark}
-                    alt={`${brand.name} mark`}
-                    className="mx-auto h-10 w-10 rounded-full border border-white/60 bg-white sm:h-12 sm:w-12"
-                  />
-                  <p className="mt-1 text-[9px] font-bold tracking-[0.18em] sm:text-[10px]">HOLIDAYS</p>
-                </div>
-              </div>
-
-              <p className="mt-2 max-w-[70%] text-sm font-black uppercase leading-tight sm:text-xl">
-                Seven Hills Holidays
+          {/* Destination Details (Bottom Overlay) */}
+          <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7 md:p-8">
+            <div className="max-w-2xl space-y-1.5 sm:space-y-2">
+              <p className="text-xs font-bold uppercase tracking-widest text-teal-300 sm:text-sm">
+                {currentDestination.tagline}
               </p>
-
-              <p className="mt-1 max-w-[66%] text-xs font-semibold italic sm:text-sm">
-                "Be Beautiful All The Time"
-              </p>
-
-              <p className="relative z-10 mt-1 self-end w-[44%] text-center text-[10px] font-semibold leading-tight text-slate-900 sm:text-xs">
-                Students | Industrial | Family 
-              </p>
-
-              <div className="mt-auto border-t border-slate-300 pt-2">
-                <p className="inline-flex items-center gap-1.5 text-xs font-semibold leading-snug sm:text-sm">
-                  <FiMapPin className="text-rose-600" />
-                  {contactDetails.officeLocation}
-                </p>
+              <h1 className="text-2xl font-extrabold leading-none sm:text-4xl md:text-5xl tracking-tight">
+                {currentDestination.label}
+              </h1>
+              
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-2 sm:pt-3 text-xs sm:text-sm text-slate-200 border-t border-white/10 mt-3 sm:mt-4">
+                <span className="font-semibold">{currentDestination.duration}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
+                <span>Best Time: {currentDestination.bestTime}</span>
+                <span className="ml-auto inline-flex items-center gap-1.5 font-bold text-teal-300 group-hover:text-teal-200 transition-colors">
+                  Explore Details <span className="transition-transform group-hover:translate-x-1">→</span>
+                </span>
               </div>
             </div>
-          </article>
-        </div>
+          </div>
+
+          {/* Auto-Resetting Progress Bar */}
+          <div
+            key={`progress-${currentDestination.id}`}
+            className="absolute bottom-0 left-0 h-1.5 bg-teal-400 z-20 animate-progress"
+            style={{ animationPlayState: (isHovered || isModalOpen) ? "paused" : "running" }}
+          />
+        </article>
       </div>
     </section>
   );

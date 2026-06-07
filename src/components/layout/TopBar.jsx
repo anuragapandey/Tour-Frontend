@@ -6,7 +6,7 @@ import logoMark from "../../assets/seven-hills-logo.svg";
 import { brand, contactDetails } from "../../data/siteContent";
 import { destinations } from "../../data/destinations";
 
-const TopBar = ({ onSelectDestination }) => {
+const TopBar = ({ onSelectDestination, activeDestinationId }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -91,19 +91,28 @@ const TopBar = ({ onSelectDestination }) => {
         }`}
       >
         <div className="section-shell flex flex-col gap-1.5">
-          {destinations.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                onSelectDestination(tab);
-                setMenuOpen(false);
-              }}
-              className="group focus-ring flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition duration-150 hover:bg-teal-50 hover:text-teal-700 cursor-pointer text-left w-full"
-            >
-              <span>{tab.label}</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-teal-500 opacity-0 transition-all duration-150 group-hover:opacity-100 group-hover:scale-110" />
-            </button>
-          ))}
+          {destinations.map((tab) => {
+            const isActive = tab.id === activeDestinationId;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  onSelectDestination(tab);
+                  setMenuOpen(false);
+                }}
+                className={`group focus-ring flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-150 cursor-pointer text-left w-full ${
+                  isActive
+                    ? "bg-teal-50 text-teal-700"
+                    : "text-slate-700 hover:bg-teal-50 hover:text-teal-700"
+                }`}
+              >
+                <span>{tab.label}</span>
+                <span className={`h-1.5 w-1.5 rounded-full bg-teal-500 transition-all duration-150 ${
+                  isActive ? "opacity-100 scale-110" : "opacity-0 group-hover:opacity-100 group-hover:scale-110"
+                }`} />
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
