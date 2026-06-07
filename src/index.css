@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -45,7 +45,7 @@ a {
 
 @layer utilities {
   .section-shell {
-    @apply mx-auto w-full max-w-7xl px-3 sm:px-5 lg:px-6;
+    @apply mx-auto w-full max-w-[98%] px-3 sm:px-5 lg:px-6;
   }
 
   .soft-card {
@@ -54,6 +54,15 @@ a {
 
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
 
