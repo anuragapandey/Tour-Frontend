@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FiMapPin, FiPhone } from "react-icons/fi";
-import logoMark from "../../assets/seven-hills-logo.svg";
+import logoMark from "../../assets/logo.jpeg";
 import { brand, contactDetails } from "../../data/siteContent";
 import { destinations } from "../../data/destinations";
 
