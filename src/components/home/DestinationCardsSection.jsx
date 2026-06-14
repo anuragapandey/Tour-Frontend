@@ -2,8 +2,9 @@ import { FiArrowUpRight, FiCalendar, FiClock } from "react-icons/fi";
 import SectionHeading from "../common/SectionHeading.jsx";
 import { destinations } from "../../data/destinations";
 import { getDestinationWhyVisit } from "../../utils/destinationContent";
+import { getDestinationCycleImage } from "../../utils/rotatingDestinationImages";
 
-const DestinationCardsSection = ({ onSelectDestination }) => {
+const DestinationCardsSection = ({ onSelectDestination, destinationImageIndexes }) => {
   return (
     <section id="destinations" className="section-shell py-8 md:py-10">
       <SectionHeading
@@ -26,7 +27,7 @@ const DestinationCardsSection = ({ onSelectDestination }) => {
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
                 <img
-                  src={destination.images[0]}
+                  src={getDestinationCycleImage(destination, destinationImageIndexes)}
                   alt={destination.label}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                 />

@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import logoMark from "../../assets/logo.jpeg";
 import { brand } from "../../data/siteContent";
 import { destinations } from "../../data/destinations";
+import { getDestinationCycleImage } from "../../utils/rotatingDestinationImages";
 
-const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestinationId, isModalOpen }) => {
+const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestinationId, isModalOpen, destinationImageIndexes }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const currentDestination =
     destinations.find((d) => d.id === activeDestinationId) || destinations[0];
+  const currentImage = getDestinationCycleImage(currentDestination, destinationImageIndexes);
 
   useEffect(() => {
     if (isHovered || isModalOpen) return;
@@ -37,8 +39,8 @@ const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestin
           {/* Slide Image */}
           <div className="absolute inset-0 h-full w-full bg-slate-950">
             <img
-              key={currentDestination.id}
-              src={currentDestination.images[0]}
+              key={`${currentDestination.id}-${currentImage}`}
+              src={currentImage}
               alt={currentDestination.label}
               className="absolute inset-0 h-full w-full object-cover object-bottom transition-transform duration-700 ease-in-out group-hover:scale-103 animate-fade-in"
             />

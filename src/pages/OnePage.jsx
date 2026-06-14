@@ -4,7 +4,7 @@ import GalleryPage from "./GalleryPage.jsx";
 import HomePage from "./HomePage.jsx";
 
 const OnePage = () => {
-  const { setSelectedDestination, activeDestinationId, setActiveDestinationId, isModalOpen } = useOutletContext();
+  const { setSelectedDestination, activeDestinationId, setActiveDestinationId, isModalOpen, destinationImageIndexes } = useOutletContext();
 
   return (
     <>
@@ -14,6 +14,7 @@ const OnePage = () => {
           activeDestinationId={activeDestinationId}
           setActiveDestinationId={setActiveDestinationId}
           isModalOpen={isModalOpen}
+          destinationImageIndexes={destinationImageIndexes}
         />
       </div>
       <div id="gallery" className="scroll-mt-24">
