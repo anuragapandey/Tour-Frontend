@@ -5,22 +5,28 @@ export const brand = {
 
 export const navLinks = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
   { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },
 ];
 
 export const contactDetails = {
-  phoneDisplay: "+91 9953166718",
+  phoneNumbers: [
+    { display: "+91 99531 66718", link: "tel:+919953166718", whatsapp: "https://wa.me/919953166718" },
+    { display: "+91 88877 65619", link: "tel:+918887765619", whatsapp: "https://wa.me/918887765619" },
+  ],
+  phoneDisplay: "+91 99531 66718",
   phoneLink: "tel:+919953166718",
   emailDisplay: "sevenhillsholiday@gmail.com",
   emailLink: "mailto:sevenhillsholiday@gmail.com",
-  whatsappDisplay: "+91 9953166718",
+  whatsappDisplay: "+91 99531 66718",
   whatsappLink: "https://wa.me/919953166718",
-  instagramLink: "https://www.instagram.com/holidayssevenhills?igsh=aW5yMWdjbm1lOWx6",
-  facebookLink: "https://www.facebook.com/share/1AjAbKVzzo/",
-  snapchatLink: "https://www.snapchat.com/add/a2_pandey?share_id=4VMvqIjLJuM&locale=en-IN",
-  xLink: "https://x.com/a2_pandey",
+  instagramLink: "https://www.instagram.com/seven__hills__holidays?utm_source=qr&igsh=ZzN3Ym9saXBycXdh",
+  facebookLink: "https://www.facebook.com/share/1EGPvsDXdg/",
+  snapchatLink: "https://www.snapchat.com/add/sevenhills1510?share_id=ZCDvWc-UmnQ&locale=en-IN",
+  xLink: "https://x.com/SevenHills1510",
+  youtubeLink: "https://youtube.com/@sevenhillsholiday?si=jjiwD2RG6TCcMC1C",
+  linkedinLink: "https://www.linkedin.com/",
+  threadsLink: "https://www.threads.net/@seven__hills__holidays",
   officeLocation: "Ganpati Vihar Colony, Munnu Khera Para, Lucknow 226017",
 };
 

@@ -1,5 +1,4 @@
 import { useOutletContext } from "react-router-dom";
-import AboutPage from "./AboutPage.jsx";
 import ContactPage from "./ContactPage.jsx";
 import GalleryPage from "./GalleryPage.jsx";
 import HomePage from "./HomePage.jsx";
@@ -16,9 +15,6 @@ const OnePage = () => {
           setActiveDestinationId={setActiveDestinationId}
           isModalOpen={isModalOpen}
         />
-      </div>
-      <div id="about" className="scroll-mt-24">
-        <AboutPage />
       </div>
       <div id="gallery" className="scroll-mt-24">
         <GalleryPage />

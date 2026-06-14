@@ -93,3 +93,24 @@ a {
   animation: slideProgress 3s linear forwards;
 }
 
+@keyframes destinationCardRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.destination-card-rise {
+  animation: destinationCardRise 0.55s ease both;
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

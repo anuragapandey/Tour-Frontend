@@ -16,11 +16,12 @@ export const destinations = [
     "duration": "6 Nights / 7 Days",
     "accent": "from-sky-500 to-blue-600",
     "images": [
-      "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/ladakh/01-1611509965-img-1677-jpg.webp",
+      "/destinations/ladakh/02-pexels-alkajha-12094539.webp",
+      "/destinations/ladakh/03-pexels-jay-baid-1420324-15844517.webp",
+      "/destinations/ladakh/04-pexels-nikhlesh-tyagi-1610382-14095829.webp",
+      "/destinations/ladakh/05-pexels-shashank-879444.webp",
+      "/destinations/ladakh/06-pexels-simarphotos-35888619.webp"
     ],
     "itinerary": [
       {
@@ -77,11 +78,11 @@ export const destinations = [
     "duration": "2 Nights / 3 Days",
     "accent": "from-amber-400 to-orange-500",
     "images": [
-      "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/taj-mahal/01-pexels-darkmodecinema-18357545.webp",
+      "/destinations/taj-mahal/02-pexels-joe-haynie-3629597-6659710.webp",
+      "/destinations/taj-mahal/03-pexels-kaushik21-17455205.webp",
+      "/destinations/taj-mahal/04-pexels-rsapmech-11521892.webp",
+      "/destinations/taj-mahal/05-pexels-timfuzail-9208729.webp"
     ],
     "itinerary": [
       {
@@ -118,11 +119,11 @@ export const destinations = [
     "duration": "5 Nights / 6 Days",
     "accent": "from-emerald-500 to-teal-600",
     "images": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1473116763269-255ea7604662?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/kerala/01-pexels-joeofcochin-6544756.webp",
+      "/destinations/kerala/02-pexels-phalgunnmaharishi-14568458.webp",
+      "/destinations/kerala/03-pexels-pranav-239815061-12313299.webp",
+      "/destinations/kerala/04-pexels-rojan-raju-447168194-15475604.webp",
+      "/destinations/kerala/05-pexels-vinod-thayat-253086382-12518601.webp"
     ],
     "itinerary": [
       {
@@ -174,11 +175,13 @@ export const destinations = [
     "duration": "2 Nights / 3 Days",
     "accent": "from-amber-600 to-amber-800",
     "images": [
-      "https://images.unsplash.com/photo-1607348988049-05a0d3dd63df?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1608958417439-d3e34b95d7b5?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/khajuraho/06-vishvanath-temple-of-khajuraho.webp",
+      "/destinations/khajuraho/01-istockphoto-466572569-2048x2048.webp",
+      "/destinations/khajuraho/02-kandariya-mahadeva-temple-khajuraho-india-unesco-heritage-site-devi-ja.webp",
+      "/destinations/khajuraho/03-khajuraho-temple-madhya-pradesh-india.webp",
+      "/destinations/khajuraho/04-lakshmana-temple-khajuraho.webp",
+      "/destinations/khajuraho/05-stock-photo-one-of-the-famous-temple-in-khajuraho-india.webp",
+      
     ],
     "itinerary": [
       {
@@ -215,11 +218,14 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-orange-500 to-rose-600",
     "images": [
-      "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1561361513-2d000a50f0db?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1598007089408-01e405e3a79d?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/varanasi/01-pexels-adinath-gilande-617966960-18435639.webp",
+      "/destinations/varanasi/02-pexels-chalta-phirta-307182428-16112840.webp",
+      "/destinations/varanasi/03-pexels-chalta-phirta-307182428-20466664.webp",
+      "/destinations/varanasi/04-pexels-kolkatarchobiwala-31149152.webp",
+      "/destinations/varanasi/05-pexels-pavan-prasad-2156671405-34322182.webp",
+      "/destinations/varanasi/06-pexels-rachel-claire-8112547.webp",
+      "/destinations/varanasi/07-pexels-rachel-claire-8112555.webp",
+      "/destinations/varanasi/08-pexels-tanmoy-pal-3640736-19273507.webp"
     ],
     "itinerary": [
       {
@@ -261,11 +267,12 @@ export const destinations = [
     "duration": "7 Nights / 8 Days",
     "accent": "from-rose-500 to-orange-500",
     "images": [
-      "https://images.unsplash.com/photo-1477587458883-471a5cd08ef4?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1599661093188-757a13f2d847?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1524293581917-878a6d017c71?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1599661046289-e318978db67c?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/rajasthan/01-pexels-abhinav-tripathi-473877923-15774210.webp",
+      "/destinations/rajasthan/02-pexels-aryasuraj-17832085.webp",
+      "/destinations/rajasthan/03-pexels-hemant-singh-chauhan-639506990-35266295.webp",
+      "/destinations/rajasthan/04-pexels-sbsoneji-3581368.webp",
+      "/destinations/rajasthan/05-pexels-story-finder-269808633-30522882.webp",
+      "/destinations/rajasthan/06-pexels-visualsbymayur-12931430.webp"
     ],
     "itinerary": [
       {
@@ -327,11 +334,13 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-teal-400 to-cyan-500",
     "images": [
-      "https://images.unsplash.com/photo-1557999818-8f553f191b29?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1584348633391-7dbffbd3675a?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1591526315578-831d17d59df4?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1571401888144-cbdec3d789ca?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/darjeeling/01-pexels-artosuraj-35283484.webp",
+      "/destinations/darjeeling/02-pexels-avijeet-ghosh-2216725-3878609.webp",
+      "/destinations/darjeeling/03-pexels-jayasoorya-k-s-2156462726-34274534.webp",
+      "/destinations/darjeeling/04-pexels-kabita-darlami-2613403-19082530.webp",
+      "/destinations/darjeeling/05-pexels-krishclicknature-33736751.webp",
+      "/destinations/darjeeling/06-pexels-pkddapacific-103875.webp",
+      "/destinations/darjeeling/07-pexels-pranjal-panchal-2673818-11468524.webp"
     ],
     "itinerary": [
       {
@@ -373,11 +382,15 @@ export const destinations = [
     "duration": "4 Nights / 5 Days",
     "accent": "from-yellow-400 to-orange-500",
     "images": [
-      "https://images.unsplash.com/photo-1512100356956-c1d472ab60df?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/goa/01-pexels-devang-joshi-97607540-9293634.webp",
+      "/destinations/goa/02-pexels-j-singh-166004985-10898926.webp",
+      "/destinations/goa/03-pexels-jebakumar-samuel-728757187-29023464.webp",
+      "/destinations/goa/04-pexels-mohit-hambiria-92377455-28368719.webp",
+      "/destinations/goa/05-pexels-mohit-hambiria-92377455-28520254.webp",
+      "/destinations/goa/06-pexels-rael-frames-547901781-37313010.webp",
+      "/destinations/goa/07-pexels-rohit-sharma-1230131-20717175.webp",
+      "/destinations/goa/08-pexels-rohit-sharma-1230131-20717182.webp",
+      "/destinations/goa/09-pexels-shashank3240-1424615.webp"
     ],
     "itinerary": [
       {
@@ -424,11 +437,13 @@ export const destinations = [
     "duration": "4 Nights / 5 Days",
     "accent": "from-sky-400 to-blue-500",
     "images": [
-      "https://images.unsplash.com/photo-1617653263743-3bb92b825d60?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1622646148785-6e580e2f5b9b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1595180400588-466d1f953086?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1549558549-41524c418481?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1611003976695-1262d08a543b?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/manali/01-pexels-ajaybhargavguduru-939714.webp",
+      "/destinations/manali/02-pexels-harshit-sharma-907967464-19872275.webp",
+      "/destinations/manali/03-pexels-kunal-gautam-216809665-29494184.webp",
+      "/destinations/manali/04-pexels-muhammed-shasal-a-v-469318555-32536512.webp",
+      "/destinations/manali/05-pexels-prasang-yadav-2151662075-37466131.webp",
+      "/destinations/manali/06-pexels-rasikka-patil-236005695-36721863.webp",
+      "/destinations/manali/07-pexels-sajhad-1379162301-36481325.webp"
     ],
     "itinerary": [
       {
@@ -475,11 +490,13 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-teal-500 to-emerald-600",
     "images": [
-      "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1588598126701-4475470d0615?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1618213837799-25d5552822a3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1568449039662-74e21a8942cf?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/nainital/01-pexels-abhishek-royal-62198877-29092077.webp",
+      "/destinations/nainital/02-pexels-animesh-srivastava-3019173-8055260.webp",
+      "/destinations/nainital/03-pexels-bimql69-15889938.webp",
+      "/destinations/nainital/04-pexels-exploredestination2-27970045.webp",
+      "/destinations/nainital/05-pexels-luis-flores-441824574-16634205.webp",
+      "/destinations/nainital/06-pexels-ravikant-34683583.webp",
+      "/destinations/nainital/07-pexels-vishalcreation-18613888.webp"
     ],
     "itinerary": [
       {
@@ -521,11 +538,14 @@ export const destinations = [
     "duration": "5 Nights / 6 Days",
     "accent": "from-cyan-500 to-blue-600",
     "images": [
-      "https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1598272548301-6c588e6ce616?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1609137144813-fdf4e9fe333c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1562790351-d273a961e0e9?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/kashmir/01-pexels-amjed-wani-1355393378-25786566.webp",
+      "/destinations/kashmir/02-pexels-beigh-yabaar-865585625-37319123.webp",
+      "/destinations/kashmir/03-pexels-danish-imtiyaz-2153700082-32859537.webp",
+      "/destinations/kashmir/04-pexels-directedbybasit-35672518.webp",
+      "/destinations/kashmir/05-pexels-qaarif-16182234.webp",
+      "/destinations/kashmir/06-pexels-umarandrabi-16443713.webp",
+      "/destinations/kashmir/07-pexels-umarandrabi-16443719.webp",
+      "/destinations/kashmir/08-pexels-wanderinglenses-13455438.webp"
     ],
     "itinerary": [
       {
@@ -577,11 +597,13 @@ export const destinations = [
     "duration": "5 Nights / 6 Days",
     "accent": "from-emerald-400 to-teal-600",
     "images": [
-      "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1610123598147-f63251c00a69?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/sikkim/01-pexels-amshiv-vip-1476065-25311368.webp",
+      "/destinations/sikkim/02-pexels-anoop1992-17937691.webp",
+      "/destinations/sikkim/03-pexels-anoop1992-17937696.webp",
+      "/destinations/sikkim/04-pexels-satya-27903-27155446.webp",
+      "/destinations/sikkim/05-pexels-stillzonwheelz-36730364.webp",
+      "/destinations/sikkim/06-pexels-theblackhood-37382698.webp",
+      "/destinations/sikkim/07-pexels-ujjwal-kishore-11047823.webp"
     ],
     "itinerary": [
       {
@@ -633,11 +655,15 @@ export const destinations = [
     "duration": "5 Nights / 6 Days",
     "accent": "from-sky-400 to-cyan-600",
     "images": [
-      "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1579684389782-64d84b5e9053?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1605538032432-a9f0c8d9ba5e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/andaman/01-pexels-erik-karits-2093459-13923920.webp",
+      "/destinations/andaman/02-pexels-jaspreet-kaur-107928263-9625358.webp",
+      "/destinations/andaman/03-pexels-juraj-vice-1310046759-25252465.webp",
+      "/destinations/andaman/04-pexels-nabilnaidu-37943986.webp",
+      "/destinations/andaman/05-pexels-nabilnaidu-37943987.webp",
+      "/destinations/andaman/06-pexels-nabilnaidu-37949757.webp",
+      "/destinations/andaman/07-pexels-nabilnaidu-37950306.webp",
+      "/destinations/andaman/08-pexels-saurabh-parange-3223689-8039153.webp",
+      "/destinations/andaman/09-pexels-siarhei-nester-318033361-35126706.webp"
     ],
     "itinerary": [
       {
@@ -689,11 +715,13 @@ export const destinations = [
     "duration": "2 Nights / 3 Days",
     "accent": "from-amber-500 to-yellow-600",
     "images": [
-      "https://images.unsplash.com/photo-1544084944-15269ec7b5a0?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1596422846543-75c6fc1f7067?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1608958220822-b5cc02fe5d88?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1627586144883-9b2f4cb1213f?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/amritsar/01-istockphoto-1413109002-612x612.webp",
+      "/destinations/amritsar/02-pexels-ammy-singh-294201421-38053061.webp",
+      "/destinations/amritsar/03-pexels-ammy-singh-294201421-38053080.webp",
+      "/destinations/amritsar/04-pexels-bhavesh-solanki-007-76505304-8638155.webp",
+      "/destinations/amritsar/05-pexels-cgmax7-35928390.webp",
+      "/destinations/amritsar/06-pexels-manpreet-singh-2448065-4267471.webp",
+      "/destinations/amritsar/07-pexels-mustang-31617838.webp"
     ],
     "itinerary": [
       {
@@ -730,11 +758,12 @@ export const destinations = [
     "duration": "5 Nights / 6 Days",
     "accent": "from-green-500 to-emerald-700",
     "images": [
-      "https://images.unsplash.com/photo-1618231354395-50269f88c83e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1629814349141-c7c4fdf4e9fe?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1506744030283-a4bd9f69cd82?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1611003976695-218081684784?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1626574783424-9b5522e8ec67?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/meghalaya/01-pexels-nazdotdesign-945556.webp",
+      "/destinations/meghalaya/02-pexels-suhashanjar-18876314-1.webp",
+      "/destinations/meghalaya/03-pexels-sunshine4ever-28051279.webp",
+      "/destinations/meghalaya/04-pexels-tanmoy-pal-3640736-29613182.webp",
+      "/destinations/meghalaya/05-pexels-vinay-pv-770152797-18907591.webp",
+      "/destinations/meghalaya/06-pexels-vishwajeetraj11-34182421.webp"
     ],
     "itinerary": [
       {
@@ -786,11 +815,14 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-amber-600 to-rose-700",
     "images": [
-      "https://images.unsplash.com/photo-1600100397608-f010e42ec8fb?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600100397995-1262d08a543b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600100397576-9c4c23ba7802?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/hampi/01-pexels-alexey2renkov-14721503.webp",
+      "/destinations/hampi/02-pexels-cr7rameshh-2356540-27011317.webp",
+      "/destinations/hampi/03-pexels-nandhukumar-12883216.webp",
+      "/destinations/hampi/04-pexels-nandhukumar-6113138.webp",
+      "/destinations/hampi/05-pexels-nschalll-35247796.webp",
+      "/destinations/hampi/06-pexels-pavan-prasad-2156671405-36033419.webp",
+      "/destinations/hampi/07-pexels-renjith-tomy-pkm-138432405-34327034.webp",
+      "/destinations/hampi/08-pexels-vidit-goel-2136806-20064037.webp"
     ],
     "itinerary": [
       {
@@ -832,11 +864,16 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-teal-500 to-sky-600",
     "images": [
-      "https://images.unsplash.com/photo-1598977123418-45f04b615e0e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c5?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f5?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/ooty/01-pexels-anildonoji-18625307.webp",
+      "/destinations/ooty/02-pexels-jomon-kollannoor-337112572-28939074.webp",
+      "/destinations/ooty/03-pexels-kichu98-21363801-1.webp",
+      "/destinations/ooty/04-pexels-kichu98-21363801.webp",
+      "/destinations/ooty/05-pexels-magda-ehlers-pexels-6364769.webp",
+      "/destinations/ooty/06-pexels-nisanth-panicker-1703892518-28399247.webp",
+      "/destinations/ooty/07-pexels-pushpak-bijewar-317686-904845.webp",
+      "/destinations/ooty/08-pexels-renjith-tomy-pkm-138432405-14417005.webp",
+      "/destinations/ooty/09-pexels-renjith-tomy-pkm-138432405-29224252.webp",
+      "/destinations/ooty/10-pexels-sourav-38041498.webp"
     ],
     "itinerary": [
       {
@@ -878,11 +915,12 @@ export const destinations = [
     "duration": "5 Nights / 6 Days",
     "accent": "from-orange-500 to-amber-600",
     "images": [
-      "https://images.unsplash.com/photo-1603258590680-d667c29e71ec?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1627586144883-9b2f4cb1213e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1621285853634-713b53874b6f?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1590050752117-238cb0612b1b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1547127796-06bb04e4b315?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/gujarat/01-pexels-garrison-gao-56316964-32058915.webp",
+      "/destinations/gujarat/02-pexels-hiteshpatel0030-24771796.webp",
+      "/destinations/gujarat/03-pexels-indu-bikash-sarker-116278202-32604468.webp",
+      "/destinations/gujarat/04-pexels-nilkanthdham-34532175.webp",
+      "/destinations/gujarat/05-pexels-ranjeet-chauhan-485922-17297746.webp",
+      "/destinations/gujarat/06-pexels-shotofsubham-33880043.webp"
     ],
     "itinerary": [
       {
@@ -934,11 +972,14 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-emerald-500 to-green-600",
     "images": [
-      "https://images.unsplash.com/photo-1593693397691-362cb9666fc2?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1616788494672-ecd7e3fded18?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1516690561799-46d8f74f90f6?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1589308078059-be1415eab4c9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3e9?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/munnar/01-pexels-gokul-mohan-2467436-18919316.webp",
+      "/destinations/munnar/02-pexels-kc22-731423.webp",
+      "/destinations/munnar/03-pexels-khiran-kumar-1481853231-26952707.webp",
+      "/destinations/munnar/04-pexels-montedhar-27354834.webp",
+      "/destinations/munnar/05-pexels-montedhar-36779125.webp",
+      "/destinations/munnar/06-pexels-nandhukumar-12883555.webp",
+      "/destinations/munnar/07-pexels-r-ajay-rajaram-2148611919-30188721.webp",
+      "/destinations/munnar/08-pexels-yogeshkumar-392100.webp"
     ],
     "itinerary": [
       {
@@ -980,11 +1021,12 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-blue-500 to-indigo-600",
     "images": [
-      "https://images.unsplash.com/photo-1626082927389-6cd097cdc6e9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1598977123418-45f04b615e09?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b479?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1513836279014-a89f7a76ae89?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe09?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/kodaikanal/01-pexels-amresh444-32572717.webp",
+      "/destinations/kodaikanal/02-pexels-d67-hunter-2154822929-33635336.webp",
+      "/destinations/kodaikanal/03-pexels-d67-hunter-2154822929-33686914.webp",
+      "/destinations/kodaikanal/04-pexels-rohit-george-1141376880-32236721.webp",
+      "/destinations/kodaikanal/05-pexels-shihan-ak-2147935133-30294828.webp",
+      "/destinations/kodaikanal/06-pexels-tonyzebastian-9944780.webp"
     ],
     "itinerary": [
       {
@@ -1026,11 +1068,11 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-teal-600 to-emerald-800",
     "images": [
-      "https://images.unsplash.com/photo-1589308078059-be1415eab4cf?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1542856391-010fb87dcfef?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1516690561799-46d8f74f90f7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3f?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1629814349141-c7c4fdf4e9f7?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/wayanad/01-pexels-hrishi-kesh-2161529008-37550290.webp",
+      "/destinations/wayanad/02-pexels-jomon-kollannoor-337112572-29718431.webp",
+      "/destinations/wayanad/03-pexels-laya-2154256377-33276326.webp",
+      "/destinations/wayanad/04-pexels-muzammil-mooza-1740334-6381561.webp",
+      "/destinations/wayanad/05-pexels-tomfisk-1700742.webp"
     ],
     "itinerary": [
       {
@@ -1072,11 +1114,16 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-lime-600 to-green-700",
     "images": [
-      "https://images.unsplash.com/photo-1593693397690-362cb9666fc9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1626574783424-9b5522e8ec69?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1544735716-392fe2489ff9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600100397608-f010e42ec8f9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3e8?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/coorg/01-beautiful-breakfast-table-in-stuart-hill-coorg-1-jpg.webp",
+      "/destinations/coorg/02-m-coorg-tv-destination-img-1-l-1084-1627.webp",
+      "/destinations/coorg/03-pexels-animesh-paul-150064-26974672.webp",
+      "/destinations/coorg/04-pexels-beepin4-87267358-9984778.webp",
+      "/destinations/coorg/05-pexels-k3ithvision-11444904.webp",
+      "/destinations/coorg/06-pexels-logalongwithme-35688870.webp",
+      "/destinations/coorg/07-pexels-montedhar-27354834.webp",
+      "/destinations/coorg/08-pexels-romawinamaasli-5722752.webp",
+      "/destinations/coorg/09-pexels-tomfisk-5871876.webp",
+      "/destinations/coorg/10-sunrise-over-coffee-estates-of-coorg-jpg.webp"
     ],
     "itinerary": [
       {
@@ -1118,11 +1165,12 @@ export const destinations = [
     "duration": "2 Nights / 3 Days",
     "accent": "from-amber-500 to-rose-600",
     "images": [
-      "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600100397608-f010e42ec8f8?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1584551246679-0daf3d275d0e?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1564507592333-c60657eea529?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1599661046289-e318978db679?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/mysore/01-pexels-fx-ambro-436492281-34879472.webp",
+      "/destinations/mysore/02-pexels-kavish-s-2160841011-37032417.webp",
+      "/destinations/mysore/03-pexels-ranjini-hemanth-2148045072-32819345.webp",
+      "/destinations/mysore/04-pexels-renjith-tomy-pkm-138432405-35080165.webp",
+      "/destinations/mysore/05-pexels-sumitkumar8-9882016.webp",
+      "/destinations/mysore/06-pexels-vignesh-bm-1479992210-26938413.webp"
     ],
     "itinerary": [
       {
@@ -1159,11 +1207,13 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-yellow-400 to-teal-500",
     "images": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d39?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b209?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1540206395-688085723329?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505118380757-91f5f5632de9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1473116763269-255ea7604669?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/pondicherry/01-pexels-damndaniel-4122239.webp",
+      "/destinations/pondicherry/02-pexels-kamal-sarjal-2371738-11769975.webp",
+      "/destinations/pondicherry/03-pexels-nisanth-panicker-1703892518-37527793.webp",
+      "/destinations/pondicherry/04-pexels-sakshi-sharma-2159390521-36035106.webp",
+      "/destinations/pondicherry/05-pexels-sohanikamat-6059803.webp",
+      "/destinations/pondicherry/06-pexels-the-eyes-150601257-35844914.webp",
+      "/destinations/pondicherry/07-pexels-tubarones-17071050.webp"
     ],
     "itinerary": [
       {
@@ -1205,11 +1255,12 @@ export const destinations = [
     "duration": "2 Nights / 3 Days",
     "accent": "from-orange-500 to-amber-600",
     "images": [
-      "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c8?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1584551246679-0daf3d275d0d?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1590050752117-238cb0612b1a?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1548013146-72479768bad9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1590050752117-238cb0612b1c?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/rameswaram/01-pexels-bliss-32181182.webp",
+      "/destinations/rameswaram/02-pexels-dhilip-ananthakrishnan-2048683-29799163.webp",
+      "/destinations/rameswaram/03-pexels-kenneth-christopher-248506783-15555493.webp",
+      "/destinations/rameswaram/04-pexels-pok-rie-33563-2106183.webp",
+      "/destinations/rameswaram/05-pexels-sunil-singam-2153303751-32654427.webp",
+      "/destinations/rameswaram/06-pexels-vikashkr50-18287935.webp"
     ],
     "itinerary": [
       {
@@ -1246,11 +1297,13 @@ export const destinations = [
     "duration": "2 Nights / 3 Days",
     "accent": "from-rose-500 to-purple-600",
     "images": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d38?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b208?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1540206395-688085723328?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505118380757-91f5f5632de8?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1473116763269-255ea7604668?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/kanyakumari/01-pexels-abhilash-17880136.webp",
+      "/destinations/kanyakumari/02-pexels-andrew-375486203-14545727.webp",
+      "/destinations/kanyakumari/03-pexels-dream-boy-878142013-19691929.webp",
+      "/destinations/kanyakumari/04-pexels-frank-van-dijk-121009207-36998160.webp",
+      "/destinations/kanyakumari/05-pexels-iriser-1543502.webp",
+      "/destinations/kanyakumari/06-pexels-suman-boipai-143965246-10575835.webp",
+      "/destinations/kanyakumari/07-pexels-umarandrabi-34411632.webp"
     ],
     "itinerary": [
       {
@@ -1287,11 +1340,13 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-teal-500 to-indigo-500",
     "images": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d37?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b207?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1540206395-688085723327?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1505118380757-91f5f5632de7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1620127252536-03bdfcf6d5c7?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/gokarna/01-pexels-brijeshritz-36665178.webp",
+      "/destinations/gokarna/02-pexels-dileep-pavan-617971140-17344039.webp",
+      "/destinations/gokarna/03-pexels-nahushdc-2068378.webp",
+      "/destinations/gokarna/04-pexels-neha-kashyap-55235567-7831783.webp",
+      "/destinations/gokarna/05-pexels-ravikant-11659295.webp",
+      "/destinations/gokarna/06-pexels-rsturka-30873476.webp",
+      "/destinations/gokarna/07-pexels-vishwanth07-16411499.webp"
     ],
     "itinerary": [
       {
@@ -1333,11 +1388,15 @@ export const destinations = [
     "duration": "3 Nights / 4 Days",
     "accent": "from-emerald-600 to-green-800",
     "images": [
-      "https://images.unsplash.com/photo-1593693397690-362cb9666fc8?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1626574783424-9b5522e8ec68?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600100397608-f010e42ec8fa?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fa?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ea?auto=format&fit=crop&w=1200&q=80"
+      "/destinations/chikmagalur/01-pexels-abhinand-1146639382-32359190.webp",
+      "/destinations/chikmagalur/02-pexels-ajay-sharda-611269-11758101.webp",
+      "/destinations/chikmagalur/03-pexels-animesh-paul-150064-28964571.webp",
+      "/destinations/chikmagalur/04-pexels-animesh-paul-150064-33349947.webp",
+      "/destinations/chikmagalur/05-pexels-aswin-reji-186116512-11294554.webp",
+      "/destinations/chikmagalur/06-pexels-mikhail-nilov-7682628.webp",
+      "/destinations/chikmagalur/07-pexels-nisanth-panicker-1703892518-28399281.webp",
+      "/destinations/chikmagalur/08-pexels-torquewanderer-13381917.webp",
+      "/destinations/chikmagalur/09-pexels-vinod-530088317-16715671.webp"
     ],
     "itinerary": [
       {

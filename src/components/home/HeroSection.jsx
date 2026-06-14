@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { FiMapPin, FiPhone } from "react-icons/fi";
 import logoMark from "../../assets/logo.jpeg";
-import { brand, contactDetails } from "../../data/siteContent";
+import { brand } from "../../data/siteContent";
 import { destinations } from "../../data/destinations";
 
 const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestinationId, isModalOpen }) => {
@@ -23,14 +22,14 @@ const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestin
   }, [activeDestinationId, setActiveDestinationId, isHovered, isModalOpen]);
 
   return (
-    <section className="section-shell py-2 md:py-3">
-      <div className="relative">
+    <section className="w-full px-3 py-0 sm:px-5 lg:px-6">
+      <div className="relative mx-auto w-full overflow-hidden">
         {/* Subtle background glow */}
-        <div className="absolute -inset-4 rounded-3xl bg-teal-500/10 blur-3xl" />
+        <div className="absolute inset-x-0 -inset-y-4 bg-teal-500/10 blur-3xl" />
 
         {/* Interactive Full-Width Hero Container */}
         <article
-          className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 text-white shadow-xl cursor-pointer group transition-all duration-300"
+          className="relative h-[72vh] min-h-[460px] w-full overflow-hidden border-y border-slate-200 bg-slate-950 text-white shadow-xl cursor-pointer group transition-all duration-300 sm:min-h-[520px] md:h-[70vh] md:min-h-[580px] lg:h-[68vh] lg:min-h-[620px]"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => onSelectDestination && onSelectDestination(currentDestination)}
@@ -41,7 +40,7 @@ const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestin
               key={currentDestination.id}
               src={currentDestination.images[0]}
               alt={currentDestination.label}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-103 animate-fade-in"
+              className="absolute inset-0 h-full w-full object-cover object-bottom transition-transform duration-700 ease-in-out group-hover:scale-103 animate-fade-in"
             />
           </div>
 
@@ -61,7 +60,7 @@ const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestin
           </div>
 
           {/* Destination Details (Bottom Overlay) */}
-          <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7 md:p-8">
+          <div className="absolute bottom-0 left-0 right-0 px-5 pb-7 pt-5 sm:px-8 sm:pb-8 md:px-12 md:pb-10 lg:px-16 lg:pb-12">
             <div className="max-w-2xl space-y-1.5 sm:space-y-2">
               <p className="text-xs font-bold uppercase tracking-widest text-teal-300 sm:text-sm">
                 {currentDestination.tagline}

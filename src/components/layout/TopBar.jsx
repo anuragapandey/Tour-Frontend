@@ -28,18 +28,22 @@ const TopBar = ({ onSelectDestination, activeDestinationId }) => {
 
         <div className="flex items-center gap-3">
           <div className="hidden flex-wrap items-center justify-end gap-x-3 gap-y-1 text-[11px] sm:flex sm:text-xs">
-            <a href={contactDetails.phoneLink} className="focus-ring flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-              <FiPhone className="text-[13px] text-teal-600" />
-              <span>{contactDetails.phoneDisplay}</span>
-            </a>
+            {contactDetails.phoneNumbers.map((phone) => (
+              <a key={phone.link} href={phone.link} className="focus-ring flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                <FiPhone className="text-[13px] text-teal-600" />
+                <span>{phone.display}</span>
+              </a>
+            ))}
             <a href={contactDetails.emailLink} className="focus-ring flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
               <FiMail className="text-[13px] text-teal-600" />
               <span>{contactDetails.emailDisplay}</span>
             </a>
-            <a href={contactDetails.whatsappLink} className="focus-ring flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-              <FaWhatsapp className="text-[13px] text-teal-600" />
-              <span>{contactDetails.whatsappDisplay}</span>
-            </a>
+            {contactDetails.phoneNumbers.map((phone) => (
+              <a key={phone.whatsapp} href={phone.whatsapp} className="focus-ring flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                <FaWhatsapp className="text-[13px] text-teal-600" />
+                <span>{phone.display}</span>
+              </a>
+            ))}
           </div>
 
           {/* Hamburger Menu Button */}
@@ -58,21 +62,27 @@ const TopBar = ({ onSelectDestination, activeDestinationId }) => {
         <p className="truncate text-[11px] text-slate-500">{contactDetails.officeLocation}</p>
 
         <div className="grid grid-cols-2 gap-1.5 text-[11px]">
-          <a
-            href={contactDetails.phoneLink}
-            className="focus-ring inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 text-slate-700"
-          >
-            <FiPhone className="text-[13px] text-teal-600" />
-            <span>{contactDetails.phoneDisplay}</span>
-          </a>
+          {contactDetails.phoneNumbers.map((phone) => (
+            <a
+              key={phone.link}
+              href={phone.link}
+              className="focus-ring inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 text-slate-700"
+            >
+              <FiPhone className="text-[13px] text-teal-600" />
+              <span>{phone.display}</span>
+            </a>
+          ))}
 
-          <a
-            href={contactDetails.whatsappLink}
-            className="focus-ring inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 text-slate-700"
-          >
-            <FaWhatsapp className="text-[13px] text-teal-600" />
-            <span>{contactDetails.whatsappDisplay}</span>
-          </a>
+          {contactDetails.phoneNumbers.map((phone) => (
+            <a
+              key={phone.whatsapp}
+              href={phone.whatsapp}
+              className="focus-ring inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 text-slate-700"
+            >
+              <FaWhatsapp className="text-[13px] text-teal-600" />
+              <span>{phone.display}</span>
+            </a>
+          ))}
 
           <a
             href={contactDetails.emailLink}

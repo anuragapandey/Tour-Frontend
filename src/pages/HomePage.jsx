@@ -1,7 +1,5 @@
 import HeroSection from "../components/home/HeroSection.jsx";
-import HotelsInfoSection from "../components/home/HotelsInfoSection.jsx";
-import PopularDestinations from "../components/home/PopularDestinations.jsx";
-import TravelInfoSection from "../components/home/TravelInfoSection.jsx";
+import DestinationCardsSection from "../components/home/DestinationCardsSection.jsx";
 
 const HomePage = ({ onSelectDestination, activeDestinationId, setActiveDestinationId, isModalOpen }) => {
   return (
@@ -12,13 +10,10 @@ const HomePage = ({ onSelectDestination, activeDestinationId, setActiveDestinati
         setActiveDestinationId={setActiveDestinationId}
         isModalOpen={isModalOpen}
       />
-      <PopularDestinations />
-      <TravelInfoSection />
-      <HotelsInfoSection />
+      <DestinationCardsSection onSelectDestination={onSelectDestination} />
     </>
   );
 };
 
 export default HomePage;
-
 

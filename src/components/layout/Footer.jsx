@@ -1,10 +1,12 @@
 ﻿import {
   FaFacebookF,
   FaInstagram,
+  FaLinkedinIn,
   FaSnapchatGhost,
   FaWhatsapp,
+  FaYoutube,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaThreads, FaXTwitter } from "react-icons/fa6";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { brand, contactDetails } from "../../data/siteContent";
 
@@ -14,11 +16,14 @@ const socialLinks = [
   { icon: FaFacebookF, href: contactDetails.facebookLink, label: "Facebook" },
   { icon: FaSnapchatGhost, href: contactDetails.snapchatLink, label: "Snapchat" },
   { icon: FaXTwitter, href: contactDetails.xLink, label: "X" },
+  { icon: FaYoutube, href: contactDetails.youtubeLink, label: "YouTube" },
+  { icon: FaLinkedinIn, href: contactDetails.linkedinLink, label: "LinkedIn" },
+  { icon: FaThreads, href: contactDetails.threadsLink, label: "Threads" },
 ];
 
 const quickLinks = [
   { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
+  { href: "#destinations", label: "Destinations" },
   { href: "#gallery", label: "Gallery" },
   { href: "#contact", label: "Contact" },
 ];
@@ -31,10 +36,12 @@ const Footer = () => {
           <h3 className="text-xl font-bold text-white">{brand.name}</h3>
           <p className="text-sm text-slate-300">{brand.headline}</p>
           <div className="space-y-1.5 text-sm text-slate-300">
-            <a href={contactDetails.phoneLink} className="focus-ring flex items-center gap-2 hover:text-white">
-              <FiPhone className="text-teal-300" />
-              {contactDetails.phoneDisplay}
-            </a>
+            {contactDetails.phoneNumbers.map((phone) => (
+              <a key={phone.link} href={phone.link} className="focus-ring flex items-center gap-2 hover:text-white">
+                <FiPhone className="text-teal-300" />
+                {phone.display}
+              </a>
+            ))}
             <a href={contactDetails.emailLink} className="focus-ring flex items-center gap-2 hover:text-white">
               <FiMail className="text-teal-300" />
               {contactDetails.emailDisplay}

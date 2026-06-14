@@ -1,21 +1,30 @@
 import { useState, useEffect } from "react";
-import { FiCalendar, FiClock, FiCheck, FiX, FiMapPin } from "react-icons/fi";
+import { FiCalendar, FiClock, FiCheck, FiX, FiMapPin, FiPhoneCall } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
+import { contactDetails } from "../../data/siteContent";
+import { getDestinationWhyVisit } from "../../utils/destinationContent";
 
 const DestinationModal = ({ destination, onClose }) => {
   const [activeImg, setActiveImg] = useState(0);
+  const [slideDirection, setSlideDirection] = useState("next");
 
   useEffect(() => {
     if (!destination || !destination.images || destination.images.length === 0) return;
     
-    // Reset active image index when destination changes
-    setActiveImg(0);
+    const resetTimer = setTimeout(() => {
+      setSlideDirection("next");
+      setActiveImg(0);
+    }, 0);
 
     const interval = setInterval(() => {
+      setSlideDirection("next");
       setActiveImg((prev) => (prev + 1) % destination.images.length);
-    }, 1000); // Slide every 1 second
+    }, 3000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(resetTimer);
+      clearInterval(interval);
+    };
   }, [destination]);
 
   if (!destination) return null;
@@ -27,15 +36,36 @@ const DestinationModal = ({ destination, onClose }) => {
   };
 
   const handleImageError = (e) => {
-    e.target.src = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80";
+    e.currentTarget.style.display = "none";
+  };
+
+  const moveSlide = (direction) => {
+    if (!destination?.images?.length) return;
+
+    setSlideDirection(direction);
+    setActiveImg((prev) => {
+      if (direction === "prev") {
+        return prev === 0 ? destination.images.length - 1 : prev - 1;
+      }
+
+      return (prev + 1) % destination.images.length;
+    });
+  };
+
+  const handleSlideClick = (e) => {
+    const bounds = e.currentTarget.getBoundingClientRect();
+    const isLeftSide = e.clientX - bounds.left < bounds.width / 2;
+    moveSlide(isLeftSide ? "prev" : "next");
   };
 
   // Construct WhatsApp enquiry link
-  const whatsappNumber = "919953166718";
   const whatsappMessage = encodeURIComponent(
     `Hi Seven Hills Holidays, I am interested in booking/enquiring about the ${destination.title} package.`
   );
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const whatsappLinks = contactDetails.phoneNumbers.map((phone) => ({
+    display: phone.display,
+    href: `${phone.whatsapp}?text=${whatsappMessage}`,
+  }));
 
   return (
     <div
@@ -62,18 +92,52 @@ const DestinationModal = ({ destination, onClose }) => {
           
           {/* Slideshow Banner (Inside Scroll Area) */}
           {destination.images && destination.images.length > 0 && (
-            <div className="relative h-64 sm:h-96 md:h-[480px] lg:h-[540px] w-full overflow-hidden bg-slate-100 shrink-0">
+            <div
+              className="group relative h-64 sm:h-96 md:h-[480px] lg:h-[540px] w-full overflow-hidden bg-slate-100 shrink-0 cursor-pointer [perspective:1200px]"
+              onClick={handleSlideClick}
+              title="Click left or right side to change image"
+            >
               {destination.images.map((img, idx) => (
                 <img
                   key={idx}
                   src={img}
                   alt={`${destination.label} slide ${idx + 1}`}
                   onError={handleImageError}
-                  className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-in-out ${
-                    idx === activeImg ? "opacity-100 scale-100" : "opacity-0 scale-105 pointer-events-none"
+                  className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out will-change-transform ${
+                    idx === activeImg
+                      ? "opacity-100 scale-100 translate-x-0 rotate-y-0 blur-0"
+                      : slideDirection === "next"
+                        ? "opacity-0 scale-105 -translate-x-8 rotate-y-6 blur-[2px] pointer-events-none"
+                        : "opacity-0 scale-105 translate-x-8 -rotate-y-6 blur-[2px] pointer-events-none"
                   }`}
                 />
               ))}
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  moveSlide("prev");
+                }}
+                className="focus-ring absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-slate-950/35 text-xl font-bold text-white opacity-0 shadow-lg backdrop-blur-md transition duration-200 hover:bg-slate-950/55 group-hover:opacity-100"
+                aria-label="Previous image"
+              >
+                &#8249;
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  moveSlide("next");
+                }}
+                className="focus-ring absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-slate-950/35 text-xl font-bold text-white opacity-0 shadow-lg backdrop-blur-md transition duration-200 hover:bg-slate-950/55 group-hover:opacity-100"
+                aria-label="Next image"
+              >
+                &#8250;
+              </button>
+
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-1/4 bg-gradient-to-r from-slate-950/25 to-transparent opacity-60 transition duration-300" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-1/4 bg-gradient-to-l from-slate-950/25 to-transparent opacity-60 transition duration-300" />
               {/* Dark Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
 
@@ -82,7 +146,11 @@ const DestinationModal = ({ destination, onClose }) => {
                 {destination.images.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setActiveImg(idx)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSlideDirection(idx < activeImg ? "prev" : "next");
+                      setActiveImg(idx);
+                    }}
                     className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                       idx === activeImg ? "w-5 bg-teal-400" : "w-1.5 bg-white/60 hover:bg-white/90"
                     }`}
@@ -118,6 +186,13 @@ const DestinationModal = ({ destination, onClose }) => {
                   <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-900">About Destination</h3>
                   <p className="text-sm leading-relaxed text-slate-600">
                     {destination.description}
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-teal-100 bg-teal-50/55 p-4">
+                  <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-900">Why Visit {destination.label}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-700">
+                    {getDestinationWhyVisit(destination)}
                   </p>
                 </div>
 
@@ -196,18 +271,33 @@ const DestinationModal = ({ destination, onClose }) => {
                   <div>
                     <h4 className="text-sm font-extrabold text-slate-900">Custom Package Enquiry</h4>
                     <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                      Planning a trip? Share your dates and customization preferences directly with our experts via WhatsApp.
+                      Planning a trip? Share your dates on WhatsApp or call our experts directly.
                     </p>
                   </div>
-                  <a
-                    href={whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-sm font-bold text-white shadow-md transition duration-150 hover:bg-emerald-700 hover:shadow-lg cursor-pointer"
-                  >
-                    <FaWhatsapp className="text-lg" />
-                    <span>Enquire on WhatsApp</span>
-                  </a>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {whatsappLinks.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#12A86B] py-3 text-sm font-bold text-white shadow-md shadow-emerald-900/10 transition duration-150 hover:bg-[#0D8F5A] hover:shadow-lg cursor-pointer"
+                      >
+                        <FaWhatsapp className="text-lg" />
+                        <span>WhatsApp {link.display}</span>
+                      </a>
+                    ))}
+                    {contactDetails.phoneNumbers.map((phone) => (
+                      <a
+                        key={phone.link}
+                        href={phone.link}
+                        className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#F97316] py-3 text-sm font-bold text-white shadow-md shadow-orange-900/10 transition duration-150 hover:bg-[#EA580C] hover:shadow-lg cursor-pointer"
+                      >
+                        <FiPhoneCall className="text-lg" />
+                        <span>Call {phone.display}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -220,15 +310,30 @@ const DestinationModal = ({ destination, onClose }) => {
               <p className="text-xs text-slate-500">Need customization?</p>
               <p className="text-xs font-bold text-slate-700">We create custom itineraries for this trip</p>
             </div>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-ring inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-md transition duration-150 hover:bg-emerald-700 hover:shadow-lg cursor-pointer"
-            >
-              <FaWhatsapp className="text-lg" />
-              <span>Enquire on WhatsApp</span>
-            </a>
+            <div className="grid w-full grid-cols-1 gap-3 sm:w-auto sm:grid-cols-2">
+              {whatsappLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-[#12A86B] px-5 py-3 text-sm font-bold text-white shadow-md shadow-emerald-900/10 transition duration-150 hover:bg-[#0D8F5A] hover:shadow-lg cursor-pointer"
+                >
+                  <FaWhatsapp className="text-lg" />
+                  <span>WhatsApp</span>
+                </a>
+              ))}
+              {contactDetails.phoneNumbers.map((phone) => (
+                <a
+                  key={phone.link}
+                  href={phone.link}
+                  className="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-[#F97316] px-5 py-3 text-sm font-bold text-white shadow-md shadow-orange-900/10 transition duration-150 hover:bg-[#EA580C] hover:shadow-lg cursor-pointer"
+                >
+                  <FiPhoneCall className="text-lg" />
+                  <span>Call</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

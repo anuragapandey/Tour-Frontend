@@ -2,11 +2,13 @@ import { useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
+  FaLinkedinIn,
   FaSnapchatGhost,
   FaWhatsapp,
+  FaYoutube,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import { FaThreads, FaXTwitter } from "react-icons/fa6";
+import { FiMail, FiPhone } from "react-icons/fi";
 import { createContactInquiry } from "../api/contactApi";
 import ErrorNotice from "../components/common/ErrorNotice.jsx";
 import SectionHeading from "../components/common/SectionHeading.jsx";
@@ -18,8 +20,7 @@ const contactCards = [
   {
     icon: FiPhone,
     title: "Phone",
-    value: contactDetails.phoneDisplay,
-    href: contactDetails.phoneLink,
+    values: contactDetails.phoneNumbers.map((phone) => ({ value: phone.display, href: phone.link })),
   },
   {
     icon: FiMail,
@@ -30,8 +31,7 @@ const contactCards = [
   {
     icon: FaWhatsapp,
     title: "WhatsApp",
-    value: contactDetails.whatsappDisplay,
-    href: contactDetails.whatsappLink,
+    values: contactDetails.phoneNumbers.map((phone) => ({ value: phone.display, href: phone.whatsapp })),
   },
 ];
 
@@ -40,6 +40,9 @@ const socialCards = [
   { icon: FaFacebookF, label: "Facebook", href: contactDetails.facebookLink },
   { icon: FaSnapchatGhost, label: "Snapchat", href: contactDetails.snapchatLink },
   { icon: FaXTwitter, label: "X", href: contactDetails.xLink },
+  { icon: FaYoutube, label: "YouTube", href: contactDetails.youtubeLink },
+  { icon: FaLinkedinIn, label: "LinkedIn", href: contactDetails.linkedinLink },
+  { icon: FaThreads, label: "Threads", href: contactDetails.threadsLink },
 ];
 
 const initialContactForm = {
@@ -187,14 +190,24 @@ const ContactPage = () => {
               return (
                 <a
                   key={card.title}
-                  href={card.href}
+                  href={card.href || card.values?.[0]?.href}
                   target={card.title === "WhatsApp" ? "_blank" : undefined}
                   rel={card.title === "WhatsApp" ? "noreferrer" : undefined}
                   className="focus-ring rounded-2xl border border-slate-200 bg-slate-50 p-3.5 transition hover:border-teal-300 hover:bg-white"
                 >
                   <Icon className="text-lg text-teal-600" />
                   <p className="mt-2 text-sm font-semibold text-slate-900">{card.title}</p>
-                  <p className="mt-1 text-xs text-slate-600 sm:text-sm">{card.value}</p>
+                  {card.values ? (
+                    <div className="mt-1 grid gap-1">
+                      {card.values.map((item) => (
+                        <span key={item.href} className="text-xs text-slate-600 sm:text-sm">
+                          {item.value}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="mt-1 text-xs text-slate-600 sm:text-sm">{card.value}</p>
+                  )}
                 </a>
               );
             })}
@@ -207,7 +220,7 @@ const ContactPage = () => {
           <div className="soft-card p-5">
             <h3 className="text-lg font-bold text-slate-900">Social Connect</h3>
             <p className="mt-2 text-sm text-slate-600">
-              Follow our social channels for updates, travel ideas, and the latest holiday offers.
+              Follow our channels for updates, travel ideas, and holiday offers.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {socialCards.map((item) => {
@@ -218,7 +231,7 @@ const ContactPage = () => {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="focus-ring inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:text-sm"
+                    className="focus-ring inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:text-sm"
                   >
                     <Icon />
                     {item.label}
@@ -226,15 +239,6 @@ const ContactPage = () => {
                 );
               })}
             </div>
-          </div>
-
-          <div className="soft-card p-4 text-sm text-slate-600">
-            <p className="mb-1.5 flex items-center gap-2 font-semibold text-slate-800">
-              <FiMapPin className="text-teal-600" />
-              Office Location
-            </p>
-            <p>{contactDetails.officeLocation}</p>
-            <p className="mt-2">Support hours: Monday to Saturday, 9:00 AM to 8:00 PM</p>
           </div>
         </div>
       </div>
