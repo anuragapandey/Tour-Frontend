@@ -1,12 +1,38 @@
 import { useState, useEffect } from "react";
-import { FiCalendar, FiClock, FiCheck, FiX, FiMapPin, FiPhoneCall } from "react-icons/fi";
+import { FiClock, FiCheck, FiX, FiMapPin, FiPhoneCall, FiCreditCard } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { contactDetails } from "../../data/siteContent";
 import { getDestinationWhyVisit } from "../../utils/destinationContent";
+import { createPaymentOrder, verifyPayment } from "../../api/paymentApi";
+import { getErrorMessage } from "../../utils/getErrorMessage";
+import { loadRazorpayCheckout } from "../../utils/loadRazorpayCheckout";
+import logoMark from "../../assets/logo.jpeg";
+import {
+  buildPaymentDescription,
+  formatCurrency,
+  getAvailableTransports,
+  getDurationDays,
+  getPackageQuote,
+  groupSizeOptions,
+  mealOptions,
+} from "../../utils/packagePricing";
 
 const DestinationModal = ({ destination, onClose }) => {
   const [activeImg, setActiveImg] = useState(0);
   const [slideDirection, setSlideDirection] = useState("next");
+  const [booking, setBooking] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    travellers: 2,
+    transport: "flight",
+    mealPlan: "breakfastDinner",
+    days: 3,
+    payMode: "advance",
+  });
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [paymentError, setPaymentError] = useState("");
+  const [paymentMessage, setPaymentMessage] = useState("");
 
   useEffect(() => {
     if (!destination || !destination.images || destination.images.length === 0) return;
@@ -27,7 +53,24 @@ const DestinationModal = ({ destination, onClose }) => {
     };
   }, [destination]);
 
+  useEffect(() => {
+    if (!destination) return;
+
+    const availableTransports = getAvailableTransports(destination);
+    setBooking((prev) => ({
+      ...prev,
+      days: getDurationDays(destination.duration),
+      transport: availableTransports.includes(prev.transport) ? prev.transport : availableTransports[0] || "car",
+    }));
+    setPaymentError("");
+    setPaymentMessage("");
+  }, [destination]);
+
   if (!destination) return null;
+
+  const availableTransports = getAvailableTransports(destination);
+  const quote = getPackageQuote(destination, booking);
+  const paymentAmount = booking.payMode === "full" ? quote.total : quote.advance;
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -56,6 +99,78 @@ const DestinationModal = ({ destination, onClose }) => {
     const bounds = e.currentTarget.getBoundingClientRect();
     const isLeftSide = e.clientX - bounds.left < bounds.width / 2;
     moveSlide(isLeftSide ? "prev" : "next");
+  };
+
+  const handleBookingChange = (event) => {
+    const { name, value } = event.target;
+    setBooking((prev) => ({
+      ...prev,
+      [name]: ["travellers", "days"].includes(name) ? Number(value) : value,
+    }));
+  };
+
+  const handlePayNow = async (event) => {
+    event.preventDefault();
+    setPaymentError("");
+    setPaymentMessage("");
+    setPaymentLoading(true);
+
+    try {
+      await loadRazorpayCheckout();
+
+      const response = await createPaymentOrder({
+        name: booking.name,
+        phone: booking.phone,
+        email: booking.email,
+        amount: paymentAmount,
+        description: buildPaymentDescription(destination, quote),
+      });
+      const { keyId, order } = response.data;
+
+      const checkout = new window.Razorpay({
+        key: keyId,
+        amount: order.amount,
+        currency: order.currency,
+        name: "Seven Hills Holidays",
+        image: new URL(logoMark, window.location.origin).toString(),
+        description: `${destination.label} ${booking.payMode === "full" ? "full payment" : "booking advance"}`,
+        order_id: order.razorpay_order_id,
+        prefill: {
+          name: booking.name,
+          email: booking.email,
+          contact: booking.phone,
+        },
+        notes: {
+          destination: destination.label,
+          travellers: String(quote.travellers),
+          package_total: String(quote.total),
+          payment_type: booking.payMode,
+        },
+        theme: {
+          color: "#0f766e",
+        },
+        handler: async (paymentResponse) => {
+          try {
+            await verifyPayment(paymentResponse);
+            setPaymentMessage("Payment successful. Our team will confirm the customized booking shortly.");
+          } catch (error) {
+            setPaymentError(getErrorMessage(error));
+          } finally {
+            setPaymentLoading(false);
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            setPaymentLoading(false);
+          },
+        },
+      });
+
+      checkout.open();
+    } catch (error) {
+      setPaymentError(getErrorMessage(error));
+      setPaymentLoading(false);
+    }
   };
 
   // Construct WhatsApp enquiry link
@@ -255,16 +370,96 @@ const DestinationModal = ({ destination, onClose }) => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 border-t border-slate-200/40 pt-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
-                      <FiCalendar className="text-lg" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] uppercase font-bold text-slate-400">Best Season</p>
-                      <p className="text-xs font-semibold text-slate-700 sm:text-sm">{destination.bestTime}</p>
-                    </div>
-                  </div>
                 </div>
+
+                {/* Booking Card */}
+                <form onSubmit={handlePayNow} className="rounded-2xl border border-teal-100 bg-white p-5 shadow-sm space-y-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h4 className="text-sm font-extrabold text-slate-900">Customize & Book</h4>
+                      <p className="mt-1 text-xs leading-relaxed text-slate-500">Origin fixed from Delhi. Change group, travel mode, meals, and days before payment.</p>
+                    </div>
+                    <span className="shrink-0 rounded-full bg-orange-100 px-2.5 py-1 text-xs font-extrabold text-orange-700">10% Off</span>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="block">
+                      <span className="mb-1 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Name</span>
+                      <input name="name" value={booking.name} onChange={handleBookingChange} required className="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" placeholder="Full name" />
+                    </label>
+                    <label className="block">
+                      <span className="mb-1 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Phone</span>
+                      <input name="phone" value={booking.phone} onChange={handleBookingChange} required className="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" placeholder="Phone number" />
+                    </label>
+                    <label className="block sm:col-span-2">
+                      <span className="mb-1 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Email</span>
+                      <input name="email" type="email" value={booking.email} onChange={handleBookingChange} className="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" placeholder="Email address" />
+                    </label>
+                    <label className="block">
+                      <span className="mb-1 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Travellers</span>
+                      <select name="travellers" value={booking.travellers} onChange={handleBookingChange} className="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm">
+                        {groupSizeOptions.map((size) => (
+                          <option key={size} value={size}>{size === 50 ? "50+" : size}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="block">
+                      <span className="mb-1 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Days</span>
+                      <input name="days" type="number" min="1" max="30" value={booking.days} onChange={handleBookingChange} className="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" />
+                    </label>
+                    <label className="block">
+                      <span className="mb-1 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Travel</span>
+                      <select name="transport" value={booking.transport} onChange={handleBookingChange} className="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm">
+                        {availableTransports.map((option) => (
+                          <option key={option} value={option}>{option === "flight" ? "Airline" : option === "car" ? "Private Car" : option[0].toUpperCase() + option.slice(1)}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="block">
+                      <span className="mb-1 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Meals</span>
+                      <select name="mealPlan" value={booking.mealPlan} onChange={handleBookingChange} className="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm">
+                        {mealOptions.map((option) => (
+                          <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+
+                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm">
+                    <div className="flex justify-between gap-3 text-slate-600">
+                      <span>Package total</span>
+                      <span className="line-through">{formatCurrency(quote.totalBeforeDiscount)}</span>
+                    </div>
+                    <div className="mt-1 flex justify-between gap-3 text-emerald-700">
+                      <span>Offer discount</span>
+                      <span>-{formatCurrency(quote.discount)}</span>
+                    </div>
+                    <div className="mt-2 flex items-end justify-between gap-3 border-t border-slate-200 pt-2">
+                      <span className="font-bold text-slate-900">Final estimate</span>
+                      <span className="text-xl font-extrabold text-slate-950">{formatCurrency(quote.total)}</span>
+                    </div>
+                    <p className="mt-1 text-xs text-slate-500">{formatCurrency(quote.perPerson)} per person, approx. {quote.distanceKm} km from Delhi.</p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 p-3 text-xs font-bold text-slate-700">
+                      <input type="radio" name="payMode" value="advance" checked={booking.payMode === "advance"} onChange={handleBookingChange} />
+                      Advance {formatCurrency(quote.advance)}
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 p-3 text-xs font-bold text-slate-700">
+                      <input type="radio" name="payMode" value="full" checked={booking.payMode === "full"} onChange={handleBookingChange} />
+                      Full payment
+                    </label>
+                  </div>
+
+                  {paymentError ? <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{paymentError}</div> : null}
+                  {paymentMessage ? <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">{paymentMessage}</div> : null}
+
+                  <button type="submit" disabled={paymentLoading} className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 px-4 py-3 text-sm font-extrabold text-white transition hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-70">
+                    <FiCreditCard />
+                    {paymentLoading ? "Opening payment..." : `Pay ${formatCurrency(paymentAmount)}`}
+                  </button>
+                </form>
 
                 {/* Enquiry Card */}
                 <div className="rounded-2xl border border-slate-150 bg-slate-50/30 p-5 space-y-4">

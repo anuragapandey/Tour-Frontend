@@ -18,7 +18,6 @@ const PopularDestinations = () => {
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-teal-600">{destination.place}</p>
               <h3 className="text-base font-bold text-slate-900">{destination.name}</h3>
               <p className="text-sm text-slate-600">{destination.summary}</p>
-              <p className="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700">{destination.bestTime}</p>
             </div>
           </article>
         ))}
@@ -28,5 +27,4 @@ const PopularDestinations = () => {
 };
 
 export default PopularDestinations;
-
 

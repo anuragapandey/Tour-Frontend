@@ -73,8 +73,6 @@ const HeroSection = ({ onSelectDestination, activeDestinationId, setActiveDestin
               
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-2 sm:pt-3 text-xs sm:text-sm text-slate-200 border-t border-white/10 mt-3 sm:mt-4">
                 <span className="font-semibold">{currentDestination.duration}</span>
-                <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
-                <span>Best Time: {currentDestination.bestTime}</span>
                 <span className="ml-auto inline-flex items-center gap-1.5 font-bold text-teal-300 group-hover:text-teal-200 transition-colors">
                   Explore Details <span className="transition-transform group-hover:translate-x-1">→</span>
                 </span>

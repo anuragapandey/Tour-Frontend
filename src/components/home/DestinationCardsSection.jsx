@@ -1,8 +1,9 @@
-import { FiArrowUpRight, FiCalendar, FiClock } from "react-icons/fi";
+import { FiArrowUpRight, FiClock } from "react-icons/fi";
 import SectionHeading from "../common/SectionHeading.jsx";
 import { destinations } from "../../data/destinations";
 import { getDestinationWhyVisit } from "../../utils/destinationContent";
 import { getDestinationCycleImage } from "../../utils/rotatingDestinationImages";
+import { formatCurrency, getPackageQuote } from "../../utils/packagePricing";
 
 const DestinationCardsSection = ({ onSelectDestination, destinationImageIndexes }) => {
   return (
@@ -56,19 +57,31 @@ const DestinationCardsSection = ({ onSelectDestination, destinationImageIndexes 
                     <FiClock />
                     {destination.duration}
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1 text-orange-700">
-                    <FiCalendar />
-                    {destination.bestTime}
-                  </span>
                 </div>
 
                 <p className="line-clamp-4 text-sm leading-relaxed text-slate-600">
                   {getDestinationWhyVisit(destination)}
                 </p>
 
+                {(() => {
+                  const quote = getPackageQuote(destination, { travellers: 2, transport: "flight" });
+
+                  return (
+                    <div className="rounded-xl border border-teal-100 bg-teal-50/60 p-3">
+                      <div className="flex items-end justify-between gap-3">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-teal-700">Delhi package starts</p>
+                          <p className="mt-0.5 text-lg font-extrabold text-slate-950">{formatCurrency(quote.perPerson)} <span className="text-xs font-semibold text-slate-500">/ person</span></p>
+                        </div>
+                        <span className="rounded-full bg-orange-100 px-2.5 py-1 text-xs font-extrabold text-orange-700">10% Off</span>
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 <div className="flex items-center justify-between border-t border-slate-100 pt-3">
                   <span className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
-                    Read more
+                    Read more / Book now
                   </span>
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-white transition group-hover:bg-teal-600 group-hover:rotate-12">
                     <FiArrowUpRight />
